@@ -2,6 +2,7 @@ package microserviciocarrera.service;
 
 import microserviciocarrera.client.EstudianteServiceClient;
 import microserviciocarrera.dto.CarreraInscriptosDTO;
+import microserviciocarrera.dto.EstudianteDTO;
 import microserviciocarrera.dto.EstudiantesInscriptosGraduadosDTO;
 import microserviciocarrera.dto.InscriptosCountDTO;
 import microserviciocarrera.entity.Carrera;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -44,10 +46,28 @@ public class CarreraService implements ICarreraService {
 
 
     public List<EstudiantesInscriptosGraduadosDTO> obtenerReporteInscriptosGraduadosCarrera(){
-        return carreraRepository.obtenerReporteInscriptosGraduadosCarrera();
+        List<EstudianteDTO> estudiantes = estudianteServiceClient.findEstudianteInscriptoGraduado();
+        List<Carrera> carreras = (List<Carrera>) carreraRepository.findAll();
+        Map<Long, String> idToNombreCarrera = carreras.stream()
+                .collect(Collectors.toMap(Carrera::getId, Carrera::getNombre));
+
+        // Enriquecer datos y mapear a EstudiantesInscriptosGraduadosDTO
+        return estudiantes.stream()
+                .map(m -> new EstudiantesInscriptosGraduadosDTO(
+                        m.getNombres(),
+                        m.getApellidos(),
+                        m.getNumeroLibreta(),
+                        idToNombreCarrera.get(m.getIdCarrera()),
+                        m.getGraduado() ? "Graduado" : "Inscripto",
+                        m.getAnio().getYear()
+                ))
+                .sorted(Comparator.comparing(EstudiantesInscriptosGraduadosDTO::getAnio)
+                        .thenComparing(EstudiantesInscriptosGraduadosDTO::getNombreCarrera))
+                .toList();
     }
 
     public Optional<Carrera> findById(Long id){
         return carreraRepository.findById(id);
     }
+
 }

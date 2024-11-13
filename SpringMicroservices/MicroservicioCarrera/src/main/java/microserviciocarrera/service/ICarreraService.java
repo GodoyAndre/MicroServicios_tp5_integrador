@@ -8,9 +8,9 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ICarreraService {
-    public List<CarreraInscriptosDTO> obtenerCarrerasConInscriptos();
+    List<CarreraInscriptosDTO> obtenerCarrerasConInscriptos();
 
-    public List<EstudiantesInscriptosGraduadosDTO> obtenerReporteInscriptosGraduadosCarrera();
+    List<EstudiantesInscriptosGraduadosDTO> obtenerReporteInscriptosGraduadosCarrera();
 
-    public Optional<Carrera> findById(Long id);
+    Optional<Carrera> findById(Long id);
 }

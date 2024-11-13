@@ -1,6 +1,7 @@
 package microserviciocarrera.controller;
 
 import microserviciocarrera.dto.CarreraInscriptosDTO;
+import microserviciocarrera.dto.EstudiantesInscriptosGraduadosDTO;
 import microserviciocarrera.entity.Carrera;
 import microserviciocarrera.service.ICarreraService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,7 @@ public class CarreraController {
     //endpoint
     @GetMapping("/search-ny-student/{idCarrera}")
     public ResponseEntity<String> getNombreCarreraById(@PathVariable Long idCarrera) {
+        System.out.println("Llegue a carrera "+ idCarrera);
         Optional<Carrera> carrera = carreraService.findById(idCarrera);
         if (carrera.isPresent()) {
             return ResponseEntity.ok(carrera.get().getNombre());
@@ -34,6 +36,11 @@ public class CarreraController {
     @GetMapping("/con-inscriptos")
     public List<CarreraInscriptosDTO> getCarrerasWithInscriptos(){
         return carreraService.obtenerCarrerasConInscriptos();
+    }
+
+    @GetMapping("/reporte-inscriptos-graduados")
+    public List<EstudiantesInscriptosGraduadosDTO> obtenerReporteInscriptosGraduadosCarrera(){
+        return carreraService.obtenerReporteInscriptosGraduadosCarrera();
     }
 
 }

@@ -8,6 +8,15 @@ public class EstudianteInscriptoGraduadoDTO {
     private String apellidos;
     private Boolean graduado;
     private Long idCarrera;
+    private LocalDate anio;
+
+    public LocalDate getAnio() {
+        return anio;
+    }
+
+    public void setAnio(LocalDate anio) {
+        this.anio = anio;
+    }
 
     public Long getIdCarrera() {
         return idCarrera;
@@ -17,13 +26,14 @@ public class EstudianteInscriptoGraduadoDTO {
         this.idCarrera = idCarrera;
     }
 
-    public EstudianteInscriptoGraduadoDTO(String numeroLibreta, Boolean graduado, LocalDate fechaInscripcion, String apellidos, String nombres, Long idCarrera) {
+    public EstudianteInscriptoGraduadoDTO(String numeroLibreta, Boolean graduado, LocalDate fechaInscripcion, String apellidos, String nombres, Long idCarrera, LocalDate anio) {
         this.numeroLibreta = numeroLibreta;
         this.graduado = graduado;
         this.fechaInscripcion = fechaInscripcion;
         this.apellidos = apellidos;
         this.nombres = nombres;
         this.idCarrera = idCarrera;
+        this.anio = anio;
     }
 
     private LocalDate fechaInscripcion;

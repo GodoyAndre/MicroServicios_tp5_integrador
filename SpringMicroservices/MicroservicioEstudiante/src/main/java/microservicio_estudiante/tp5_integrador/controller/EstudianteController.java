@@ -1,6 +1,7 @@
 package microservicio_estudiante.tp5_integrador.controller;
 
 import microservicio_estudiante.tp5_integrador.dto.EstudianteCarreraDTO;
+import microservicio_estudiante.tp5_integrador.dto.EstudianteInscriptoGraduadoDTO;
 import microservicio_estudiante.tp5_integrador.dto.InscriptosCountDTO;
 import microservicio_estudiante.tp5_integrador.entity.Estudiante;
 import microservicio_estudiante.tp5_integrador.service.EstudianteService;
@@ -37,14 +38,19 @@ public class EstudianteController {
         return estudianteService.findAll();
     }
 
-    @GetMapping("/buscar")
-    public List<EstudianteCarreraDTO> findEstudiantesByCarreraAndCiudad(@RequestParam Long idCarrera, @RequestParam String ciudad) {
+    @GetMapping("/buscar/{idCarrera}/{ciudad}")
+    public List<EstudianteCarreraDTO> findEstudiantesByCarreraAndCiudad(@PathVariable("idCarrera") Long idCarrera, @PathVariable("ciudad") String ciudad) {
         return estudianteService.findEstudiantesByCarreraAndCiudad(ciudad, idCarrera);
     }
 
     @GetMapping("/cantidad-inscriptos")
     public ResponseEntity<?> obtenerCantidadInscriptos() {
         return ResponseEntity.ok(estudianteService.obtenerCantidadInscriptos());
+    }
+
+    @GetMapping("/reporte-estudiantes")
+    public ResponseEntity<?> findEstudianteInscriptoGraduado(){
+        return ResponseEntity.ok(estudianteService.findEstudianteInscriptoGraduado());
     }
 }
 

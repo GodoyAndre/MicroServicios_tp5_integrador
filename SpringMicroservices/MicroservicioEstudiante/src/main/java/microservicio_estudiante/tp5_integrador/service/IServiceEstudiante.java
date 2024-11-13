@@ -28,4 +28,5 @@ public interface IServiceEstudiante {
     public List<InscriptosCountDTO> obtenerCantidadInscriptos();
 
 
+
 }

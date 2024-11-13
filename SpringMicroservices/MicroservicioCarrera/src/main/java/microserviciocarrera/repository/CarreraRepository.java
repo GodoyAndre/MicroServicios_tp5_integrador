@@ -13,12 +13,12 @@ import java.util.Optional;
 @Repository
 public interface CarreraRepository extends CrudRepository<Carrera, Long> {
 
+    //List<CarreraInscriptosDTO> findCarrerasWithInscritos();
 
-    public List<CarreraInscriptosDTO> findCarrerasWithInscritos();
 
-    public List<EstudiantesInscriptosGraduadosDTO> obtenerReporteInscriptosGraduadosCarrera();
+    //List<EstudiantesInscriptosGraduadosDTO> obtenerReporteInscriptosGraduadosCarrera();
 
-    public Optional<Carrera> findById(Long id);
+    Optional<Carrera> findById(Long id);
 }
 
 

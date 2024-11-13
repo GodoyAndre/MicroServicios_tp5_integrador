@@ -16,13 +16,19 @@ public class EstudianteCarreraDTO {
     private String ciudadResidencia;
     private String nombreCarrera;
 
+    public EstudianteCarreraDTO(String nombres, String apellido, String ciudadResidencia) {
+        this.nombres = nombres;
+        this.apellido = apellido;
+        this.ciudadResidencia = ciudadResidencia;
+    }
+
     @Override
     public String toString() {
         return "EstudianteCarreraDTO{" +
                 "nombres='" + nombres + '\'' +
                 ", apellido='" + apellido + '\'' +
                 ", ciudadResidencia='" + ciudadResidencia + '\'' +
-                ", nombreCarrera='" + nombreCarrera + '\'' +
+                ", idCarrera='" + nombreCarrera + '\'' +
                 '}';
     }
 }

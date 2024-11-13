@@ -20,16 +20,19 @@ public interface EstudianteRepository extends CrudRepository<Estudiante, String>
     public List<Estudiante> findAllByOrderByApellidoAsc();
 
     // Otra consulta personalizada para buscar estudiantes en una ciudad específica
-    @Query("SELECT new microservicio_estudiante.tp5_integrador.dto.EstudianteCarreraDTO(e.nombres, e.apellido, e.ciudadResidencia, :nombreCarrera) " +
+    @Query("SELECT new microservicio_estudiante.tp5_integrador.dto.EstudianteCarreraDTO(e.nombres, e.apellido, e.ciudadResidencia) " +
             "FROM Estudiante e JOIN e.matriculas m " +
             "WHERE m.idCarrera = :idCarrera AND e.ciudadResidencia = :ciudad")
-    public List<EstudianteCarreraDTO> findEstudiantesByCarreraAndCiudad(String ciudad, String nombreCarrera);
+    public List<EstudianteCarreraDTO> findEstudiantesByCarreraAndCiudad(String ciudad, Long idCarrera);
 
     public Optional<Estudiante> findById(String id);
 
-    @Query("SELECT NEW microservicio_estudiante.tp5_integrador.dto.EstudianteInscriptoGraduadoDTO(e.numeroLibretaUniversitaria, m.graduado, m.fechaInscripcion, e.apellido, e.nombres, m.idCarrera)" +
-            "FROM Matricula m JOIN m.estudiante e")
+
+    @Query("SELECT NEW microservicio_estudiante.tp5_integrador.dto.EstudianteInscriptoGraduadoDTO(e.numeroLibretaUniversitaria, m.graduado, m.fechaInscripcion, e.apellido, e.nombres, m.idCarrera, m.fechaInscripcion)" +
+            "FROM Estudiante e JOIN e.matriculas m")
     public List<EstudianteInscriptoGraduadoDTO> findEstudianteInscriptoGraduado();
+
+
 
     @Query("SELECT new microservicio_estudiante.tp5_integrador.dto.InscriptosCountDTO(m.idCarrera, COUNT(m)) " +
             "FROM Estudiante e JOIN e.matriculas m " +
