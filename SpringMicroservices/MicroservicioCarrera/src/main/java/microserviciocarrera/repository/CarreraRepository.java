@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface CarreraRepository extends CrudRepository<Carrera, String> {
+public interface CarreraRepository extends CrudRepository<Carrera, Long> {
 
 
     public List<CarreraInscriptosDTO> findCarrerasWithInscritos();

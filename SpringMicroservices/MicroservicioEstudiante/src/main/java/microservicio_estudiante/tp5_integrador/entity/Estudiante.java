@@ -1,10 +1,18 @@
 package microservicio_estudiante.tp5_integrador.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
+@Data
 @Entity
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Estudiante {
 
     @Id
@@ -23,87 +31,6 @@ public class Estudiante {
     @ElementCollection
     @CollectionTable(name = "matricula", joinColumns = @JoinColumn(name = "estudiante_id"))
     private List<Matricula> matriculas;
-
-    //Constructor
-    public Estudiante() {
-    }
-
-    public Estudiante(String nombres, String apellido, Integer edad, String genero, String documento, String ciudadResidencia, List<Matricula> matriculas, String numeroLibretaUniversitaria) {
-        this.nombres = nombres;
-        this.apellido = apellido;
-        this.edad = edad;
-        this.genero = genero;
-        this.documento = documento;
-        this.ciudadResidencia = ciudadResidencia;
-        this.matriculas = matriculas;
-        this.numeroLibretaUniversitaria = numeroLibretaUniversitaria;
-    }
-
-    // Getters y setters
-
-    public String getNombres() {
-        return nombres;
-    }
-
-    public void setNombres(String nombres) {
-        this.nombres = nombres;
-    }
-
-    public String getApellido() {
-        return apellido;
-    }
-
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
-
-    public Integer getEdad() {
-        return edad;
-    }
-
-    public void setEdad(Integer edad) {
-        this.edad = edad;
-    }
-
-    public String getGenero() {
-        return genero;
-    }
-
-    public void setGenero(String genero) {
-        this.genero = genero;
-    }
-
-    public String getDocumento() {
-        return documento;
-    }
-
-    public void setDocumento(String documento) {
-        this.documento = documento;
-    }
-
-    public String getCiudadResidencia() {
-        return ciudadResidencia;
-    }
-
-    public void setCiudadResidencia(String ciudadResidencia) {
-        this.ciudadResidencia = ciudadResidencia;
-    }
-
-    public String getNumeroLibretaUniversitaria() {
-        return numeroLibretaUniversitaria;
-    }
-
-    public void setNumeroLibretaUniversitaria(String numeroLibretaUniversitaria) {
-        this.numeroLibretaUniversitaria = numeroLibretaUniversitaria;
-    }
-
-    public List<Matricula> getMatriculas() {
-        return matriculas;
-    }
-
-    public void setMatriculas(List<Matricula> matriculas) {
-        this.matriculas = matriculas;
-    }
 
     @Override
     public String toString() {
