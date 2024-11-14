@@ -1,4 +1,4 @@
-# 📄 Ejercicio Integrador TP2
+# 📄 Ejercicio Integrador TP5
 
 ## 🗂 Descripción
 Este proyecto implementa un sistema de gestión con PostgreSQL como base de datos y RabbitMQ para la comunicación entre servicios. El sistema gestiona información detallada sobre estudiantes y carreras.
