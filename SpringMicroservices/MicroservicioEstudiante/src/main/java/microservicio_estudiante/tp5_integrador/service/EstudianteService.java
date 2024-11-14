@@ -36,7 +36,6 @@ public class EstudianteService implements IServiceEstudiante {
 
     // Otra consulta personalizada para buscar estudiantes en una ciudad específica
     public List<EstudianteCarreraDTO> findEstudiantesByCarreraAndCiudad(String ciudadResidencia, Long idCarrera) {
-        System.out.println("idc:" + idCarrera + "ciu" + ciudadResidencia);
         String nombreCarrera = carreraClient.getNombreCarreraById(idCarrera);
         List<EstudianteCarreraDTO> estudiantes = estudianteRepository.findEstudiantesByCarreraAndCiudad(ciudadResidencia, idCarrera);
         //estudiantes.forEach(estudiante -> estudiante.setNombreCarrera(nombreCarrera));

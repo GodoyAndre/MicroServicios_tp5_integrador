@@ -43,7 +43,7 @@ public class EstudianteController {
 
     @GetMapping("/find/{genero}")
     public ResponseEntity<?> getEstudianteByGenero(@PathVariable String genero) {
-        Optional<List<Estudiante>> estudiantes = Optional.ofNullable(estudianteService.findByGenero(genero));
+        Optional<List<Estudiante>> estudiantes = Optional.ofNullable(estudianteService.findByGenero(genero.toUpperCase()));
 
         if (estudiantes.isPresent()) {
             return ResponseEntity.ok(estudiantes.get());

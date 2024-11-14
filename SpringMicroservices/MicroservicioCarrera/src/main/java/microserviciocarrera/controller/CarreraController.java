@@ -65,14 +65,10 @@ public class CarreraController {
 
     @PostMapping("/crear")
     public ResponseEntity<Carrera> addCarrera(@RequestBody Carrera carrera) throws URISyntaxException {
-        estudianteService.save(Estudiante.builder()
-                .numeroLibretaUniversitaria(estudiante.getNumeroLibretaUniversitaria())
-                .apellido(estudiante.getApellido())
-                .nombres(estudiante.getNombres())
-                .edad(estudiante.getEdad())
-                .documento(estudiante.getDocumento())
-                .genero(estudiante.getGenero()).build());
-        return ResponseEntity.created(new URI("/estudiantes/crear")).build();
+        carreraService.save(Carrera.builder()
+                .nombre(carrera.getNombre())
+                .id(carrera.getId()).build());
+        return ResponseEntity.created(new URI("/carreras/crear")).build();
     }
 
 }

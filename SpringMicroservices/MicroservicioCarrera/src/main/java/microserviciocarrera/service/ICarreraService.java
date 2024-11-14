@@ -17,4 +17,6 @@ public interface ICarreraService {
     Carrera actualizarCarrera(Long id, Carrera carrera);
 
     List<Carrera> getAllCarreras();
+
+    Carrera save(Carrera c);
 }

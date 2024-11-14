@@ -101,4 +101,8 @@ public class CarreraService implements ICarreraService {
         return (List<Carrera>) carreraRepository.findAll();
     }
 
+    public Carrera save(Carrera c){
+        return carreraRepository.save(c);
+    }
+
 }
