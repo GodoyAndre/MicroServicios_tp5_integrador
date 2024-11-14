@@ -113,21 +113,6 @@ Si encuentras algún problema, aquí hay algunas soluciones comunes:
 
 ---
 
-## 🤝 Contribuir
-
-Si deseas contribuir al proyecto, por favor:
-
-1. Haz un fork del repositorio
-2. Crea una nueva rama para tu feature
-3. Realiza tus cambios y haz commit
-4. Envía un pull request
-
----
-
-## 📄 Licencia
-
-Este proyecto está bajo la Licencia MIT. Consulta el archivo `LICENSE` para más detalles.
-
 ---
 
 ## 📧 Contacto
@@ -140,12 +125,3 @@ Si tienes alguna pregunta o sugerencia, no dudes en contactarnos:
 
 ---
 
-## 🙏 Agradecimientos
-
-Agradecemos a todos los contribuyentes y a las siguientes tecnologías que hacen posible este proyecto:
-
-- PostgreSQL
-- RabbitMQ
-- Docker
-- Spring Boot (si se utiliza)
-"""
