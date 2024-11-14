@@ -1,0 +1,85 @@
+-- Script de inicialización para el microservicio de estudiantes
+
+-- Asegurarse de que las tablas estén vacías
+TRUNCATE TABLE estudiante CASCADE;
+TRUNCATE TABLE matricula CASCADE;
+
+-- Insertar datos de estudiantes
+INSERT INTO estudiante (nombres, apellido, edad, genero, documento, ciudad_residencia, numero_libreta_universitaria)
+VALUES
+('Juan', 'Pérez', 22, 'M', '12345678', 'Buenos Aires', 'LU001'),
+('Ana', 'García', 21, 'F', '23456789', 'Córdoba', 'LU002'),
+('Luis', 'Martínez', 23, 'M', '34567890', 'Rosario', 'LU003'),
+('María', 'Fernández', 24, 'F', '45678901', 'Mendoza', 'LU004'),
+('Carlos', 'Rodríguez', 20, 'M', '56789012', 'La Plata', 'LU005'),
+('Sofía', 'López', 22, 'F', '67890123', 'Mar del Plata', 'LU006'),
+('Andrés', 'González', 19, 'M', '78901234', 'San Miguel de Tucumán', 'LU007'),
+('Laura', 'Ramírez', 21, 'F', '89012345', 'Neuquén', 'LU008'),
+('Diego', 'Alvarez', 23, 'M', '90123456', 'Salta', 'LU009'),
+('Paula', 'Torres', 24, 'F', '01234567', 'Bahía Blanca', 'LU010'),
+('Gabriel', 'Martín', 25, 'M', '23456780', 'Jujuy', 'LU011'),
+('Lucía', 'Navarro', 26, 'F', '34567812', 'San Juan', 'LU012'),
+('Ricardo', 'Romero', 28, 'M', '45678923', 'San Luis', 'LU013'),
+('Julia', 'Díaz', 22, 'F', '56789034', 'Santa Fe', 'LU014'),
+('Santiago', 'Ruiz', 29, 'M', '23456890', 'Posadas', 'LU015'),
+('Natalia', 'Cabrera', 27, 'F', '78912345', 'Corrientes', 'LU016'),
+('Marcos', 'Ortiz', 30, 'M', '78923456', 'Santa Rosa', 'LU017'),
+('Martín', 'Gómez', 22, 'M', '34567890', 'Buenos Aires', 'LU018'),
+('Carla', 'Méndez', 21, 'F', '45678901', 'Córdoba', 'LU019'),
+('Fernando', 'Pérez', 23, 'M', '56789012', 'Rosario', 'LU020'),
+('Beatriz', 'López', 24, 'F', '67890123', 'Mendoza', 'LU021'),
+('Esteban', 'García', 20, 'M', '78901234', 'La Plata', 'LU022'),
+('Gabriela', 'Morales', 22, 'F', '89012345', 'Mar del Plata', 'LU023'),
+('Javier', 'Castro', 19, 'M', '90123456', 'San Miguel de Tucumán', 'LU024'),
+('Verónica', 'Figueroa', 21, 'F', '01234567', 'Neuquén', 'LU025'),
+('Héctor', 'López', 23, 'M', '23456789', 'Salta', 'LU026'),
+('Mónica', 'Vázquez', 24, 'F', '34567890', 'Bahía Blanca', 'LU027'),
+('Alberto', 'Romero', 25, 'M', '45678901', 'Jujuy', 'LU028'),
+('Mariana', 'Alonso', 26, 'F', '56789012', 'San Juan', 'LU029'),
+('Jorge', 'Pardo', 28, 'M', '67890123', 'San Luis', 'LU030'),
+('Natalia', 'Cano', 22, 'F', '78901234', 'Santa Fe', 'LU031'),
+('Lucas', 'Núñez', 29, 'M', '89012345', 'Posadas', 'LU032'),
+('Silvia', 'Maldonado', 27, 'F', '90123456', 'Corrientes', 'LU033'),
+('Adrián', 'Salazar', 30, 'M', '01234567', 'Santa Rosa', 'LU034');
+
+-- Insertar datos de matrículas
+INSERT INTO matricula (estudiante_id, id_carrera, fecha_inscripcion, graduado)
+VALUES
+('LU001', 1, '2022-03-01', false),
+('LU002', 2, '2021-09-15', false),
+('LU003', 3, '2023-01-10', false),
+('LU004', 4, '2019-04-20', true),
+('LU005', 5, '2022-08-12', false),
+('LU006', 6, '2021-11-05', false),
+('LU007', 7, '2023-06-25', false),
+('LU008', 8, '2018-12-30', true),
+('LU009', 9, '2022-02-14', false),
+('LU010', 10, '2020-07-22', false),
+('LU011', 1, '2022-04-01', false),
+('LU012', 2, '2019-10-10', true),
+('LU013', 3, '2023-03-15', false),
+('LU014', 4, '2022-06-22', false),
+('LU015', 8, '2018-11-11', true),
+('LU016', 10, '2021-05-19', false),
+('LU017', 9, '2018-02-20', true),
+('LU018', 1, '2023-02-14', false),
+('LU019', 2, '2022-01-11', true),
+('LU020', 3, '2021-08-22', false),
+('LU021', 4, '2020-12-25', false),
+('LU022', 5, '2018-10-05', true),
+('LU023', 6, '2023-07-15', false),
+('LU024', 7, '2021-09-05', false),
+('LU025', 8, '2019-06-10', true),
+('LU026', 9, '2022-11-22', false),
+('LU027', 10, '2018-04-18', true),
+('LU028', 1, '2019-07-10', false),
+('LU029', 2, '2021-05-25', false),
+('LU030', 3, '2018-12-01', true),
+('LU031', 4, '2020-03-03', false),
+('LU032', 10, '2019-08-20', false),
+('LU033', 8, '2018-11-11', true),
+('LU034', 9, '2022-09-25', false);
+
+-- Verificar la inserción
+SELECT * FROM estudiante;
+SELECT * FROM matricula;

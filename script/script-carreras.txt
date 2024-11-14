@@ -1,0 +1,14 @@
+INSERT INTO carrera (id, nombre) VALUES (1,'Ingeniería de Sistemas');
+INSERT INTO carrera (id, nombre) VALUES (2,'Ingeniería Civil');
+INSERT INTO carrera (id, nombre) VALUES (3,'Licenciatura en Matemáticas');
+INSERT INTO carrera (id, nombre) VALUES (4,'Arquitectura');
+INSERT INTO carrera (id, nombre) VALUES (5,'Ingeniería Electrónica');
+INSERT INTO carrera (id, nombre) VALUES (6,'Ingeniería Mecánica');
+INSERT INTO carrera (id, nombre) VALUES (7,'Medicina');
+INSERT INTO carrera (id, nombre) VALUES (8,'Derecho');
+INSERT INTO carrera (id, nombre) VALUES (9,'Ciencias de la Computación');
+INSERT INTO carrera (id, nombre) VALUES (10,'Química');
+INSERT INTO carrera (id, nombre) VALUES (11,'Filosofía');
+INSERT INTO carrera (id, nombre) VALUES (12,'Ciencias Políticas');
+INSERT INTO carrera (id, nombre) VALUES (13,'Economía');
+INSERT INTO carrera (id, nombre) VALUES (14,'Psicología');
