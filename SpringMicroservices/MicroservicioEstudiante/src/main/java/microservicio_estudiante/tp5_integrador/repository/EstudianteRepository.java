@@ -1,9 +1,12 @@
 package microservicio_estudiante.tp5_integrador.repository;
 
+import feign.Param;
+import jakarta.transaction.Transactional;
 import microservicio_estudiante.tp5_integrador.dto.EstudianteCarreraDTO;
 import microservicio_estudiante.tp5_integrador.dto.EstudianteInscriptoGraduadoDTO;
 import microservicio_estudiante.tp5_integrador.dto.InscriptosCountDTO;
 import microservicio_estudiante.tp5_integrador.entity.Estudiante;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
@@ -40,6 +43,9 @@ public interface EstudianteRepository extends CrudRepository<Estudiante, String>
     public List<InscriptosCountDTO> findInscriptosCountByCarrera();
 
 
+
+    @Query("SELECT e FROM Estudiante e JOIN e.matriculas m WHERE m.idCarrera = :idCarrera")
+    List<Estudiante> findByIdCarrera(@Param("idCarrera") Long idCarrera);
 
 
 

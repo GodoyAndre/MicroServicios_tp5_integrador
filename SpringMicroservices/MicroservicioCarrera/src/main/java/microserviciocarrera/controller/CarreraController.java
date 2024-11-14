@@ -6,11 +6,10 @@ import microserviciocarrera.entity.Carrera;
 import microserviciocarrera.service.ICarreraService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,10 +23,20 @@ public class CarreraController {
     //endpoint
     @GetMapping("/search-ny-student/{idCarrera}")
     public ResponseEntity<String> getNombreCarreraById(@PathVariable Long idCarrera) {
-        System.out.println("Llegue a carrera "+ idCarrera);
         Optional<Carrera> carrera = carreraService.findById(idCarrera);
         if (carrera.isPresent()) {
             return ResponseEntity.ok(carrera.get().getNombre());
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getCarreraById(@PathVariable Long id) {
+        Optional<Carrera> carrera = carreraService.findById(id);
+        if (carrera.isPresent()) {
+            Carrera car = carrera.get();
+            return ResponseEntity.ok(car);
         } else {
             return ResponseEntity.notFound().build();
         }
@@ -41,6 +50,29 @@ public class CarreraController {
     @GetMapping("/reporte-inscriptos-graduados")
     public List<EstudiantesInscriptosGraduadosDTO> obtenerReporteInscriptosGraduadosCarrera(){
         return carreraService.obtenerReporteInscriptosGraduadosCarrera();
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Carrera> actualizarCarrera(@PathVariable Long id, @RequestBody Carrera carrera) {
+        Carrera carreraActualizada = carreraService.actualizarCarrera(id, carrera);
+        return ResponseEntity.ok(carreraActualizada);
+    }
+
+    @GetMapping
+    public List<Carrera> getAllCarreras() {
+        return carreraService.getAllCarreras();
+    }
+
+    @PostMapping("/crear")
+    public ResponseEntity<Carrera> addCarrera(@RequestBody Carrera carrera) throws URISyntaxException {
+        estudianteService.save(Estudiante.builder()
+                .numeroLibretaUniversitaria(estudiante.getNumeroLibretaUniversitaria())
+                .apellido(estudiante.getApellido())
+                .nombres(estudiante.getNombres())
+                .edad(estudiante.getEdad())
+                .documento(estudiante.getDocumento())
+                .genero(estudiante.getGenero()).build());
+        return ResponseEntity.created(new URI("/estudiantes/crear")).build();
     }
 
 }

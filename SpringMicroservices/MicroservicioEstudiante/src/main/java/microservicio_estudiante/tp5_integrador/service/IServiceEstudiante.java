@@ -27,6 +27,10 @@ public interface IServiceEstudiante {
 
     public List<InscriptosCountDTO> obtenerCantidadInscriptos();
 
+    public List<Estudiante> findByIdCarrera(Long idCarrera);
 
+    public void actualizarCarreraEstudiantes(Long idCarreraAntiguo, Long idCarreraNuevo);
+
+    Estudiante save(Estudiante estudiante);
 
 }

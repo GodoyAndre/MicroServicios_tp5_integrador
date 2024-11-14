@@ -22,6 +22,9 @@ public class CarreraService implements ICarreraService {
     private CarreraRepository carreraRepository;
 
     @Autowired
+    private CarreraEventPublisher eventPublisher;
+
+    @Autowired
     private EstudianteServiceClient estudianteServiceClient;
 
     public List<CarreraInscriptosDTO> obtenerCarrerasConInscriptos() {
@@ -59,15 +62,43 @@ public class CarreraService implements ICarreraService {
                         m.getNumeroLibreta(),
                         idToNombreCarrera.get(m.getIdCarrera()),
                         m.getGraduado() ? "Graduado" : "Inscripto",
-                        m.getAnio().getYear()
+                        m.getAnio()
                 ))
-                .sorted(Comparator.comparing(EstudiantesInscriptosGraduadosDTO::getAnio)
-                        .thenComparing(EstudiantesInscriptosGraduadosDTO::getNombreCarrera))
+                .sorted(Comparator.comparing(EstudiantesInscriptosGraduadosDTO::getNombreCarrera)
+                        .thenComparing(EstudiantesInscriptosGraduadosDTO::getAnio))
                 .toList();
     }
 
     public Optional<Carrera> findById(Long id){
         return carreraRepository.findById(id);
+    }
+
+
+    public Carrera actualizarCarrera(Long id, Carrera carreraNueva) {
+
+        System.out.println("id: " + id);
+        if (carreraRepository.existsById(carreraNueva.getId())) {
+            throw new RuntimeException("El id " + carreraNueva.getId() + " ya está en uso");
+        }
+        Carrera carreraExistente = carreraRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Carrera no encontrada"));
+
+        if (!carreraExistente.getId().equals(carreraNueva.getId())) {
+            // Publica un evento solo si el idCarrera ha cambiado
+            eventPublisher.publishCarreraActualizada(carreraExistente.getId(), carreraNueva.getId());
+        }
+
+        Carrera nueva = Carrera.builder()
+                .id(carreraNueva.getId())
+                .nombre(carreraNueva.getNombre())
+                        .build();
+        carreraRepository.delete(carreraExistente);
+        //carreraExistente.setId(carreraNueva.getId());
+        return carreraRepository.save(nueva);
+    }
+
+    public List<Carrera> getAllCarreras(){
+        return (List<Carrera>) carreraRepository.findAll();
     }
 
 }

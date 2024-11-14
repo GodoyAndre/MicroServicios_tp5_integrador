@@ -19,6 +19,8 @@ public interface CarreraRepository extends CrudRepository<Carrera, Long> {
     //List<EstudiantesInscriptosGraduadosDTO> obtenerReporteInscriptosGraduadosCarrera();
 
     Optional<Carrera> findById(Long id);
+
+    boolean existsById(Long id);
 }
 
 

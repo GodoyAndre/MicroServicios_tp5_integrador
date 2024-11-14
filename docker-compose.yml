@@ -1,0 +1,52 @@
+version: '3.8'
+
+services:
+  postgres_estudiantes:
+    image: postgres
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      - DATABASE_HOST=127.0.0.1
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=estudiantes_db
+    volumes:
+      - postgres_estudiantes_data:/var/lib/postgresql/data
+
+  postgres_carreras:
+    image: postgres
+    restart: always
+    ports:
+      - "5433:5432"
+    environment:
+      - DATABASE_HOST=127.0.0.1
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=carreras_db
+    volumes:
+      - postgres_carreras_data:/var/lib/postgresql/data
+
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "admin@admin.com"
+      PGADMIN_DEFAULT_PASSWORD: "admin"
+    ports:
+      - "80:80"
+    depends_on:
+      - postgres_estudiantes
+      - postgres_carreras
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+
+volumes:
+  postgres_estudiantes_data:
+  postgres_carreras_data:
+  rabbitmq_data:

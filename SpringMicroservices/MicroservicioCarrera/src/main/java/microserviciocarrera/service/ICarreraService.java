@@ -13,4 +13,8 @@ public interface ICarreraService {
     List<EstudiantesInscriptosGraduadosDTO> obtenerReporteInscriptosGraduadosCarrera();
 
     Optional<Carrera> findById(Long id);
+
+    Carrera actualizarCarrera(Long id, Carrera carrera);
+
+    List<Carrera> getAllCarreras();
 }

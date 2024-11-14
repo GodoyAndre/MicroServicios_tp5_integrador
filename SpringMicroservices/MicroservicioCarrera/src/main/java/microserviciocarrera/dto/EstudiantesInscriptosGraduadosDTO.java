@@ -18,7 +18,7 @@ public class EstudiantesInscriptosGraduadosDTO {
     private String numeroLibretaUniversitaria;
     private String nombreCarrera;
     private String estado;
-    private int anio;
+    private LocalDate anio;
 
 
     @Override
