@@ -21,14 +21,4 @@ public class EstudianteCarreraDTO {
         this.apellido = apellido;
         this.ciudadResidencia = ciudadResidencia;
     }
-
-    @Override
-    public String toString() {
-        return "EstudianteCarreraDTO{" +
-                "nombres='" + nombres + '\'' +
-                ", apellido='" + apellido + '\'' +
-                ", ciudadResidencia='" + ciudadResidencia + '\'' +
-                ", idCarrera='" + nombreCarrera + '\'' +
-                '}';
-    }
 }

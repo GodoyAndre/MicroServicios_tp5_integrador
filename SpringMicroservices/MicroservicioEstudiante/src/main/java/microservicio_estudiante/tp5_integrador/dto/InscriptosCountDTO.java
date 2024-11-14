@@ -1,29 +1,17 @@
 package microservicio_estudiante.tp5_integrador.dto;
 
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class InscriptosCountDTO {
 
     private long idCarrera;
     private long cantInscriptos;
-
-    public InscriptosCountDTO(long idCarrera, long cantInscriptos) {
-        this.idCarrera = idCarrera;
-        this.cantInscriptos = cantInscriptos;
-    }
-
-    // Getters and setters
-    public long getIdCarrera() {
-        return idCarrera;
-    }
-
-    public void setIdCarrera(long idCarrera) {
-        this.idCarrera = idCarrera;
-    }
-
-    public long getCantInscriptos() {
-        return cantInscriptos;
-    }
-
-    public void setCantInscriptos(long cantInscriptos) {
-        this.cantInscriptos = cantInscriptos;
-    }
 }

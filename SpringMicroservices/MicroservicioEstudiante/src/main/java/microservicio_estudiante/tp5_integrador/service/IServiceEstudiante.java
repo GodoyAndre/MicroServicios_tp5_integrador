@@ -11,25 +11,25 @@ import java.util.Optional;
 public interface IServiceEstudiante {
 
     // Consulta personalizada para encontrar estudiantes por género
-    public List<Estudiante> findByGenero(String genero);
+    List<Estudiante> findByGenero(String genero);
 
     // Consulta personalizada para ordenar por apellido
-    public List<Estudiante> findAllByOrderByApellidoAsc();
+    List<Estudiante> findAllByOrderByApellidoAsc();
 
     // Otra consulta personalizada para buscar estudiantes en una ciudad específica
-    public List<EstudianteCarreraDTO> findEstudiantesByCarreraAndCiudad(String ciudadResidencia, Long idCarrera);
+    List<EstudianteCarreraDTO> findEstudiantesByCarreraAndCiudad(String ciudadResidencia, Long idCarrera);
 
-    public Optional<Estudiante> findById(String id);
+    Optional<Estudiante> findById(String id);
 
-    public List<Estudiante> findAll();
+    List<Estudiante> findAll();
 
-    public List<EstudianteInscriptoGraduadoDTO> findEstudianteInscriptoGraduado();
+    List<EstudianteInscriptoGraduadoDTO> findEstudianteInscriptoGraduado();
 
-    public List<InscriptosCountDTO> obtenerCantidadInscriptos();
+    List<InscriptosCountDTO> obtenerCantidadInscriptos();
 
-    public List<Estudiante> findByIdCarrera(Long idCarrera);
+    List<Estudiante> findByIdCarrera(Long idCarrera);
 
-    public void actualizarCarreraEstudiantes(Long idCarreraAntiguo, Long idCarreraNuevo);
+    void actualizarCarreraEstudiantes(Long idCarreraAntiguo, Long idCarreraNuevo);
 
     Estudiante save(Estudiante estudiante);
 

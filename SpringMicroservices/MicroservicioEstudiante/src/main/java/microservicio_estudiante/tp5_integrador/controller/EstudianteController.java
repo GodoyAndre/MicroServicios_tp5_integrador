@@ -34,10 +34,28 @@ public class EstudianteController {
         }
     }
 
+    @GetMapping("/all-by-apellidos")
+    public ResponseEntity<?> getEstudiantes() {
+        List<Estudiante> estudiantes = estudianteService.findAllByOrderByApellidoAsc();
+
+        return ResponseEntity.ok(estudiantes);
+    }
+
+    @GetMapping("/find/{genero}")
+    public ResponseEntity<?> getEstudianteByGenero(@PathVariable String genero) {
+        Optional<List<Estudiante>> estudiantes = Optional.ofNullable(estudianteService.findByGenero(genero));
+
+        if (estudiantes.isPresent()) {
+            return ResponseEntity.ok(estudiantes.get());
+        }
+        return ResponseEntity.notFound().build();
+    }
+
     // Endpoint para obtener todos los estudiantes
-    @GetMapping
-    public List<Estudiante> findAll() {
-        return estudianteService.findAll();
+    @GetMapping("/all")
+    public ResponseEntity<?> findAll() {
+        List<Estudiante> estudiantes = estudianteService.findAll();
+        return ResponseEntity.ok(estudiantes);
     }
 
     @GetMapping("/buscar/{idCarrera}/{ciudad}")
