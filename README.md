@@ -1,6 +1,7 @@
 # 📄 Ejercicio Integrador TP5
 
 ## 🗂 Descripción
+Proyecto desarrollado originalmente en 14/11/2024 como parte de la cátedra Diseño de Sistemas de Software.
 Este proyecto implementa un sistema de gestión con PostgreSQL como base de datos y RabbitMQ para la comunicación entre servicios. El sistema gestiona información detallada sobre estudiantes y carreras.
 
 ---
